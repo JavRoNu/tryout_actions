@@ -5,7 +5,7 @@ cat("starting generation...")
 theseed <- round(runif(1,0,100))
 set.seed(theseed)
 added <- sample(1:10,1)
-date <- Sys.Date()
+date <- Sys.time()
 
 if (file.exists("data/mydata.rda")) {
   
@@ -17,15 +17,12 @@ if (file.exists("data/mydata.rda")) {
                        Coin = rbinom(added,1,.5)
                        )
   
-  newone$P <- newone$Coin/1000
-  
-  
   thedata <- rbind(thedata,newone)
   
-  session <- max(sesinfo)
+  session <- max(sesinfo$Session)
   
   info <- data.frame(Session = session + 1,
-                     Date = date,
+                     Date = as.character(date),
                      Seed = theseed,
                      Added = added)
   
@@ -45,7 +42,7 @@ if (file.exists("data/mydata.rda")) {
   thedata <- newone
   
   sesinfo <- data.frame(Session = session,
-                     Date = date,
+                     Date = as.character(date),
                      Seed = theseed,
                      Added = added)
   
@@ -75,19 +72,19 @@ p1 <- ggplot(res,aes(N,P)) +
 
 ggsave(filename = "charts/plot1.png",plot = p1)
 
-p2 <- ggplot(sesinfo,aes(date,added)) + 
-  geom_bar(stat = "identity", fill = "red") +
+p2 <- ggplot(sesinfo,aes(Date,Added)) + 
+  geom_bar(stat = "identity",fill = "red") +
   theme_minimal() +
   labs(title = "Added Coins by date")
 
 ggsave(filename = "charts/plot2.png",plot = p2)
 
-tabtxt <- paste(knitr::kable(newone),collapse = "\n")
+tabtxt <- paste(knitr::kable(sesinfo),collapse = "\n")
 mdtxt <- paste("# Status of the operation
   
   This is a daily random binomial generator.
   
-## Procces info",sesinfo,
+## Procces info",tabtxt,
 "## Charts 
 
 ![](charts/plot1.png)

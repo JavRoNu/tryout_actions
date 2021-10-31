@@ -4,58 +4,11 @@
   
 ## Procces info
 
-1
-
-## Charts 
-
-![](charts/plot1.png)
-
-![](charts/plot2.png)
-
-## End
-
-Thats it, thanks for watching!
-# Status of the operation
-  
-  This is a daily random binomial generator.
-  
-## Procces info
-
-18931
-
-## Charts 
-
-![](charts/plot1.png)
-
-![](charts/plot2.png)
-
-## End
-
-Thats it, thanks for watching!
-# Status of the operation
-  
-  This is a daily random binomial generator.
-  
-## Procces info
-
-55
-
-## Charts 
-
-![](charts/plot1.png)
-
-![](charts/plot2.png)
-
-## End
-
-Thats it, thanks for watching!
-# Status of the operation
-  
-  This is a daily random binomial generator.
-  
-## Procces info
-
-10
+| Session|Date                | Seed| Added|
+|-------:|:-------------------|----:|-----:|
+|       1|2021-10-31 06:34:50 |   91|     3|
+|       2|2021-10-31 06:34:59 |   99|     1|
+|       3|2021-10-31 06:42:06 |   99|     1|
 
 ## Charts 
 
