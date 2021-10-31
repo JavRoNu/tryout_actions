@@ -13,15 +13,16 @@ if (file.exists("data/mydata.rda")) {
   
   load("data/mydata.rda")
   
+  session <- max(sesinfo$Session) + 1
+  
   newone <- data.frame(Session = session,
                        Coin = rbinom(added,1,.5)
                        )
   
   thedata <- rbind(thedata,newone)
   
-  session <- max(sesinfo$Session)
   
-  info <- data.frame(Session = session + 1,
+  info <- data.frame(Session = session,
                      Date = as.character(date),
                      Seed = theseed,
                      Added = added)
@@ -70,14 +71,16 @@ p1 <- ggplot(res,aes(N,P)) +
   theme_minimal() +
   labs(title = "Convergence of Binomial 0.5")
 
-ggsave(filename = "charts/plot1.png",plot = p1)
+ggsave(filename = "charts/plot1.png",
+       plot = p1,  width = 8,height = 6)
 
 p2 <- ggplot(sesinfo,aes(Date,Added)) + 
   geom_bar(stat = "identity",fill = "red") +
   theme_minimal() +
   labs(title = "Added Coins by date")
 
-ggsave(filename = "charts/plot2.png",plot = p2)
+ggsave(filename = "charts/plot2.png",
+       plot = p2, width = 8,height = 6)
 
 tabtxt <- paste(knitr::kable(sesinfo),collapse = "\n")
 mdtxt <- paste("# Status of the operation
