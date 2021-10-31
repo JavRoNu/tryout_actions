@@ -38,8 +38,6 @@ jobs:
          git add data/*
          git commit -am "GH ACTION $(date)"
          git push origin master
-       env:
+        env:
          REPO_KEY: ${{secrets.GITHUB_TOKEN}}
          username: github-actions
-        
-      
