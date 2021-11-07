@@ -2,10 +2,10 @@
 
 cat("starting generation...")
 
-theseed <- round(runif(1,0,100))
+date <- Sys.time()
+theseed <- as.numeric(date)
 set.seed(theseed)
 added <- sample(1:10,1)
-date <- Sys.time()
 
 if (file.exists("data/mydata.rda")) {
   
