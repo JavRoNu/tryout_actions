@@ -74,15 +74,18 @@ p1 <- ggplot(res,aes(N,P)) +
 ggsave(filename = "charts/plot1.png",
        plot = p1,  width = 8,height = 6)
 
-p2 <- ggplot(sesinfo,aes(Date,Added)) + 
-  geom_bar(stat = "identity",fill = "red") +
+p2 <- ggplot(sesinfo,aes(Added)) + 
+  geom_bar(stat = "count",fill = "red") +
+  scale_x_continuous(breaks = 1:10) +
   theme_minimal() +
-  labs(title = "Added Coins by date")
+  labs(title = "Count of Added Coins per day")
 
 ggsave(filename = "charts/plot2.png",
        plot = p2, width = 8,height = 6)
 
-tabtxt <- paste(knitr::kable(sesinfo),collapse = "\n")
+sesinfo_tab <- sesinfo[(nrow(sesinfo) - 19):nrow(sesinfo),]
+tabtxt <- paste(knitr::kable(sesinfo_tab),collapse = "\n")
+
 mdtxt <- paste("# Status of the operation
   
   This is a daily random binomial generator.
